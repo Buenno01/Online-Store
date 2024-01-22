@@ -1,18 +1,23 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Dispatch, SetStateAction } from 'react';
+import SearchBar from './SearchBar';
+import { ProductType } from '../../@types/ProductType';
 
-function Layout() {
+type LayoutProps = {
+  searchQuery: string,
+  setSearchQuery: Dispatch<SetStateAction<string>>,
+  setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>
+};
+
+function Layout({ searchQuery, setSearchQuery, setSearchedProducts }: LayoutProps) {
   return (
     <>
       <header>
-        <form>
-          <input
-            className="border border-gray-400"
-            type="text"
-            placeholder="digite o nome do produto"
-          />
-          <button>Pesquisar</button>
-        </form>
+        <SearchBar
+          searchQuery={ searchQuery }
+          setSearchQuery={ setSearchQuery }
+          setSearchedProducts={ setSearchedProducts }
+        />
         <h1>
           Online Store
         </h1>
