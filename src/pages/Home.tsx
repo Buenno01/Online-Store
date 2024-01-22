@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getCategories } from '../services/api';
 import { CategoryType } from '../@types/CategoryType';
 import Aside from '../components/Aside';
+import ShopButton from '../components/ShoppingButton/ShoppingButton';
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -25,6 +26,9 @@ function Home() {
         products.length === 0
          && 'Digite algum termo de pesquisa ou escolha uma categoria.'
       }
+      </div>
+      <div>
+        <ShopButton />
       </div>
     </main>
   );
