@@ -4,6 +4,7 @@ import { CategoryType } from '../@types/CategoryType';
 import Aside from '../components/Aside';
 import ProductCard from '../components/ProductCard';
 import { ProductType } from '../@types/ProductType';
+import ShopButton from '../components/ShoppingButton/ShoppingButton';
 
 type HomeProps = {
   searchedProducts: ProductType[] | undefined,
@@ -38,6 +39,9 @@ function Home({ searchedProducts }: HomeProps) {
         !searchedProducts
          && 'Digite algum termo de pesquisa ou escolha uma categoria.'
         }
+      </div>
+      <div>
+        <ShopButton />
       </div>
     </main>
   );
