@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { getCategories } from '../services/api';
 import { CategoryType } from '../@types/CategoryType';
 import Aside from '../components/Aside';
@@ -8,9 +8,10 @@ import ShopButton from '../components/ShoppingButton/ShoppingButton';
 
 type HomeProps = {
   searchedProducts: ProductType[] | undefined,
+  setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>
 };
 
-function Home({ searchedProducts }: HomeProps) {
+function Home({ searchedProducts, setSearchedProducts }: HomeProps) {
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function Home({ searchedProducts }: HomeProps) {
 
   return (
     <main className="flex">
-      <Aside categories={ categories } />
+      <Aside categories={ categories } setSearchedProducts={ setSearchedProducts } />
       <section>
         {
         searchedProducts as ProductType[]

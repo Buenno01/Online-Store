@@ -23,7 +23,13 @@ function App() {
           />
       }
       >
-        <Route index element={ <Home searchedProducts={ searchedProducts } /> } />
+        <Route
+          index
+          element={ <Home
+            setSearchedProducts={ setSearchedProducts }
+            searchedProducts={ searchedProducts }
+          /> }
+        />
         <Route path="/carrinho" element={ <ShoppingCar /> } />
       </Route>
     </Routes>
