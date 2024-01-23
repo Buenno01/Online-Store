@@ -1,12 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
 import { ProductType } from '../@types/ProductType';
 import ProductCard from '../components/ProductCard';
 import { useLocalStorage } from '../services/useLocalStorage';
-
-type ShoppingCartProps = {
-  products: ProductType[],
-  setProducts: Dispatch<SetStateAction<ProductType[]>>
-};
 
 interface ShoppingCartProduct extends ProductType {
   quantity: number,

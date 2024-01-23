@@ -38,15 +38,7 @@ function App() {
             shoppingCartItems={ soppingCartItems }
           /> }
         />
-        <Route
-          path="/carrinho"
-          element={
-            <ShoppingCart
-              products={ soppingCartItems }
-              setProducts={ setShoppingCartItems }
-            />
-}
-        />
+        <Route path="/carrinho" element={ <ShoppingCart /> } />
         <Route
           path="/product-details/:productId"
           element={ <ProductDetails /> }
