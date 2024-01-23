@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Layout from './components/Layout';
 import { ProductType } from './@types/ProductType';
 import ShoppingCar from './pages/ShoppingCar';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,7 +22,7 @@ function App() {
             setSearchQuery={ setSearchQuery }
             setSearchedProducts={ setSearchedProducts }
           />
-      }
+        }
       >
         <Route
           index
@@ -31,6 +32,10 @@ function App() {
           /> }
         />
         <Route path="/carrinho" element={ <ShoppingCar /> } />
+        <Route
+          path="/product-details/:productId"
+          element={ <ProductDetails /> }
+        />
       </Route>
     </Routes>
   );
