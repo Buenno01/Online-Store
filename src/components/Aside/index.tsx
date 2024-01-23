@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { CategoryType } from '../../@types/CategoryType';
 import { ProductType } from '../../@types/ProductType';
 import { getProductsByCategory } from '../../services/api';
