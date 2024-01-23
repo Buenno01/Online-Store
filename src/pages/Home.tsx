@@ -8,10 +8,13 @@ import ShopButton from '../components/ShoppingButton/ShoppingButton';
 
 type HomeProps = {
   searchedProducts: ProductType[] | undefined,
-  setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>
+  setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>,
+  shoppingCartItems: ProductType[],
+  setShoppingCartItems: Dispatch<SetStateAction<ProductType[]>>,
 };
 
-function Home({ searchedProducts, setSearchedProducts }: HomeProps) {
+function Home({ searchedProducts, setSearchedProducts,
+  setShoppingCartItems, shoppingCartItems }: HomeProps) {
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
@@ -31,7 +34,13 @@ function Home({ searchedProducts, setSearchedProducts }: HomeProps) {
         {
         searchedProducts as ProductType[]
         && searchedProducts?.map(
-          (product) => <ProductCard key={ product.id } product={ product } />,
+          (product) => (
+            <ProductCard
+              shoppingCartItems={ shoppingCartItems }
+              setShoppingCartItems={ setShoppingCartItems }
+              key={ product.id }
+              product={ product }
+            />),
         )
 }
       </section>

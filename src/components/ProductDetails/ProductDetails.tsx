@@ -2,9 +2,14 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ProductType } from '../../@types/ProductType';
 import { getProductById } from '../../services/api';
+import { useLocalStorage } from '../../services/useLocalStorage';
 
 function ProductDetail() {
   const params = useParams<{ productId?: string }>();
+  const [
+    cartProducts,
+    setCartProducts,
+  ] = useLocalStorage<ProductType[]>('shoppingCart', [] as ProductType[]);
   const [product, setProduct] = useState<ProductType | null>(null);
 
   useEffect(() => {
@@ -25,6 +30,11 @@ function ProductDetail() {
     return <p>Carregando...</p>;
   }
   const { title, thumbnail, price } = product;
+
+  const handleAddToCart = () => {
+    setCartProducts([...cartProducts, product]);
+  };
+
   return (
     <div>
       <h2 data-testid="product-detail-name">{title}</h2>
@@ -35,6 +45,9 @@ function ProductDetail() {
         {price}
         {' '}
       </p>
+      <button data-testid="product-detail-add-to-cart" onClick={ handleAddToCart }>
+        Adicionar ao Carrinho
+      </button>
       <Link to="/carrinho">
         <button data-testid="shopping-cart-button">Ir para o Carrinho</button>
       </Link>
