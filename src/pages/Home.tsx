@@ -5,12 +5,13 @@ import Aside from '../components/Aside';
 import ProductCard from '../components/ProductCard';
 import { ProductType } from '../@types/ProductType';
 import ShopButton from '../components/ShoppingButton/ShoppingButton';
+import { ShoppingCartProduct } from '../@types/ShoppingCartProduct';
 
 type HomeProps = {
   searchedProducts: ProductType[] | undefined,
   setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>,
-  shoppingCartItems: ProductType[],
-  setShoppingCartItems: Dispatch<SetStateAction<ProductType[]>>,
+  shoppingCartItems: ShoppingCartProduct[],
+  setShoppingCartItems: Dispatch<SetStateAction<ShoppingCartProduct[]>>,
 };
 
 function Home({ searchedProducts, setSearchedProducts,

@@ -6,13 +6,14 @@ import { ProductType } from './@types/ProductType';
 import ShoppingCart from './pages/ShoppingCart';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import { useLocalStorage } from './services/useLocalStorage';
+import { ShoppingCartProduct } from './@types/ShoppingCartProduct';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [
     soppingCartItems,
     setShoppingCartItems,
-  ] = useLocalStorage<ProductType[]>('shoppingCart', []);
+  ] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', []);
   const [
     searchedProducts,
     setSearchedProducts,
