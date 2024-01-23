@@ -17,10 +17,6 @@ function Aside({ categories, setSearchedProducts }: AsideProps) {
       });
     setSearchedProducts(data as ProductType[]);
   };
-  // setSelectedProducts(data);
-  // O comp aside, q contém a lista de categorias, deve contar com a função de busca por categoria, em cada um de seus buttons;
-  // Com o resultado da busca, o array selectedProducts, deve ser renderizado na Home;
-  // Com o comp de categorias formado, a lista recuperada, deve ser exibida;
 
   return (
     <aside>

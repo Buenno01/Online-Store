@@ -25,6 +25,13 @@ function ProductDetail() {
     return <p>Carregando...</p>;
   }
   const { title, thumbnail, price } = product;
+
+  const handleAddToCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const updatedCart = [...cart, product];
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
   return (
     <div>
       <h2 data-testid="product-detail-name">{title}</h2>
@@ -35,6 +42,9 @@ function ProductDetail() {
         {price}
         {' '}
       </p>
+      <button data-testid="product-detail-add-to-cart" onClick={ handleAddToCart }>
+        Adicionar ao Carrinho
+      </button>
       <Link to="/carrinho">
         <button data-testid="shopping-cart-button">Ir para o Carrinho</button>
       </Link>
