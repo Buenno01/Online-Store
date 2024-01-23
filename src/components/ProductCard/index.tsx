@@ -1,11 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Dispatch, SetStateAction } from 'react';
 import { ProductType } from '../../@types/ProductType';
+import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
 
 type ProductCardProps = {
   product: ProductType,
-  shoppingCartItems: ProductType[],
-  setShoppingCartItems: Dispatch<SetStateAction<ProductType[]>>,
+  shoppingCartItems: ShoppingCartProduct[],
+  setShoppingCartItems: Dispatch<SetStateAction<ShoppingCartProduct[]>>,
   quantity?: number,
 };
 
@@ -16,7 +17,23 @@ function ProductCard({ product, setShoppingCartItems,
   const { pathname } = useLocation();
 
   const addToShoppingCart = (productObject: ProductType) => {
-    setShoppingCartItems([...shoppingCartItems, productObject]);
+    const itemIndex = shoppingCartItems.findIndex((item) => item.id === product.id);
+
+    if (itemIndex === -1) {
+      setShoppingCartItems([
+        ...shoppingCartItems,
+        { ...productObject, quantityOnShoppingCart: 1 },
+      ]);
+    } else {
+      const copy = shoppingCartItems.map((current, index) => {
+        const item = current;
+        item.quantityOnShoppingCart = index === itemIndex
+          ? (current.quantityOnShoppingCart + 1)
+          : current.quantityOnShoppingCart;
+        return item;
+      });
+      setShoppingCartItems([...copy]);
+    }
   };
 
   return (
