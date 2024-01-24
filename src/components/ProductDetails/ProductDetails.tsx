@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import { ProductType } from '../../@types/ProductType';
 import { getProductById } from '../../services/api';
 import { useLocalStorage } from '../../services/useLocalStorage';
+import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
 
 function ProductDetail() {
   const params = useParams<{ productId?: string }>();
   const [
     cartProducts,
     setCartProducts,
-  ] = useLocalStorage<ProductType[]>('shoppingCart', [] as ProductType[]);
+  ] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', [] as ShoppingCartProduct[]);
   const [product, setProduct] = useState<ProductType | null>(null);
 
   useEffect(() => {
@@ -32,7 +33,23 @@ function ProductDetail() {
   const { title, thumbnail, price } = product;
 
   const handleAddToCart = () => {
-    setCartProducts([...cartProducts, product]);
+    const itemIndex = cartProducts.findIndex((item) => item.id === product.id);
+
+    if (itemIndex === -1) {
+      setCartProducts([
+        ...cartProducts,
+        { ...product, quantityOnShoppingCart: 1 },
+      ]);
+    } else {
+      const copy = cartProducts.map((current, index) => {
+        const item = current;
+        item.quantityOnShoppingCart = index === itemIndex
+          ? (current.quantityOnShoppingCart + 1)
+          : current.quantityOnShoppingCart;
+        return item;
+      });
+      setCartProducts([...copy]);
+    }
   };
 
   return (
