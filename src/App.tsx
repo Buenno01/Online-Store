@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Layout from './components/Layout';
 import { ProductType } from './@types/ProductType';
 import ShoppingCart from './pages/ShoppingCart';
-import ProductDetails from './components/ProductDetails/ProductDetails';
+import ProductDetails from './pages/ProductDetails';
 import { useLocalStorage } from './services/useLocalStorage';
 import { ShoppingCartProduct } from './@types/ShoppingCartProduct';
 
