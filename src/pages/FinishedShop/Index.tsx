@@ -34,7 +34,7 @@ function CheckoutShop() {
   };
   const totalValue:
   number = shoppingitems.reduce((total, item: ShoppingCartProduct) => {
-    return total + item.price * item.quantityOnShoppingCart;
+    return total + parseFloat(item.price) * item.quantityOnShoppingCart;
   }, 0);
   return (
     <div>
