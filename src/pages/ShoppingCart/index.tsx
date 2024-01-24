@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
 import { useLocalStorage } from '../../services/useLocalStorage';
 import ProductListItem from './ProductListItem';
@@ -25,6 +26,13 @@ function ShoppingCart() {
           Seu carrinho está vazio
         </div>
       )}
+      <div>
+        <Link to="/Checkout">
+          <button type="button" data-testid="checkout-products">
+            Finalizar Shop
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
