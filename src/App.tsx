@@ -7,6 +7,7 @@ import ShoppingCart from './pages/ShoppingCart';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import { useLocalStorage } from './services/useLocalStorage';
 import { ShoppingCartProduct } from './@types/ShoppingCartProduct';
+import CheckoutShop from './pages/FinishedShop/Index';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -44,6 +45,8 @@ function App() {
           path="/product-details/:productId"
           element={ <ProductDetails /> }
         />
+        <Route path="/Checkout" element={ <CheckoutShop /> } />
+
       </Route>
     </Routes>
   );
