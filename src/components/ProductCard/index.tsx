@@ -56,7 +56,10 @@ function ProductCard({ product, setShoppingCartItems,
           {title}
         </h3>
         <h2 className="text-3xl font-medium">
-          {price}
+          {
+          parseFloat(price).toFixed(2).toString().split('.')
+            .join(',')
+          }
         </h2>
         {
           shipping && shipping.free_shipping
