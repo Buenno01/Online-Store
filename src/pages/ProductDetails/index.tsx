@@ -4,21 +4,28 @@ import { ProductType } from '../../@types/ProductType';
 import { getProductById } from '../../services/api';
 import { useLocalStorage } from '../../services/useLocalStorage';
 import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
+import Comment from '../../components/Comment';
+import NewCommentForm from '../../components/NewCommentForm';
+import { CommentFormType } from '../../@types/CommentFormType';
 
 function ProductDetail() {
-  const params = useParams<{ productId?: string }>();
+  const { productId } = useParams<{ productId?: string }>();
   const [
     cartProducts,
     setCartProducts,
   ] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', [] as ShoppingCartProduct[]);
+  const [
+    comments,
+    setComments,
+  ] = useLocalStorage<CommentFormType[]>(productId as string, []);
   const [product, setProduct] = useState<ProductType | null>(null);
 
   useEffect(() => {
     const getIdProduct = async () => {
       // console.log('Obtendo detalhes do produto...');
-      if (params.productId) {
+      if (productId) {
         try {
-          const productData = await getProductById(params.productId);
+          const productData = await getProductById(productId);
           setProduct(productData);
         } catch (error) {
           console.error('Erro ao obter detalhes do produto:', error);
@@ -26,7 +33,7 @@ function ProductDetail() {
       }
     };
     getIdProduct();
-  }, [params.productId]);
+  }, [productId]);
   if (!product) {
     return <p>Carregando...</p>;
   }
@@ -73,6 +80,20 @@ function ProductDetail() {
       <Link to="/carrinho">
         <button data-testid="shopping-cart-button">Ir para o Carrinho</button>
       </Link>
+      <NewCommentForm
+        setComments={ setComments }
+        comments={ comments }
+      />
+      {
+        comments.map((comment) => (
+          <Comment
+            key={ comment.email + comment.rating }
+            text={ comment.text }
+            email={ comment.email }
+            rating={ comment.rating }
+          />
+        ))
+      }
     </div>
   );
 }
