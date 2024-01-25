@@ -29,7 +29,7 @@ function Aside({ categories, setSearchedProducts,
     <>
       <div className="h-12 w-full" />
       <aside
-        className="flex flex-col w-full bg-white absolute "
+        className="flex flex-col w-full bg-white absolute z-40"
       >
         <button
           onClick={ () => { setCategoriesVisibility(!categoriesVisibility); } }
@@ -59,6 +59,12 @@ function Aside({ categories, setSearchedProducts,
           }
         </nav>
       </aside>
+      <button
+        aria-label="fechar categorias"
+        onClick={ () => { setCategoriesVisibility(false); } }
+        className={ `${categoriesVisibility ? 'absolute' : 'hidden'}
+        w-full h-full z-20 bg-black opacity-20` }
+      />
     </>
   );
 }
