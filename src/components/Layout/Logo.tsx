@@ -8,7 +8,7 @@ function Logo() {
       </span>
       <span className="flex flex-col text-center text-2xl">
         <span className="uppercase text-white font-semibold leading-6">front-end</span>
-        <span className="lowercase text-lg leading-4">online store</span>
+        <span className="lowercase font-light text-lg leading-4">online store</span>
       </span>
     </h1>
   );
