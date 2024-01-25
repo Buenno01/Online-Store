@@ -30,7 +30,7 @@ function ProductDetail() {
   if (!product) {
     return <p>Carregando...</p>;
   }
-  const { title, thumbnail, price } = product;
+  const { title, thumbnail, price, shipping } = product;
 
   const handleAddToCart = () => {
     const itemIndex = cartProducts.findIndex((item) => item.id === product.id);
@@ -62,6 +62,11 @@ function ProductDetail() {
         {price}
         {' '}
       </p>
+      {shipping && shipping.free_shipping && (
+        <p data-testid="free-shipping">
+          Frete Grátis
+        </p>
+      )}
       <button data-testid="product-detail-add-to-cart" onClick={ handleAddToCart }>
         Adicionar ao Carrinho
       </button>
