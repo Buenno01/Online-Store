@@ -12,7 +12,7 @@ type ProductCardProps = {
 
 function ProductCard({ product, setShoppingCartItems,
   shoppingCartItems, quantity = 1 }: ProductCardProps) {
-  const { thumbnail, title, price } = product;
+  const { thumbnail, title, price, shipping } = product;
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -41,6 +41,11 @@ function ProductCard({ product, setShoppingCartItems,
       <img src={ thumbnail } alt={ title } />
       <h3 data-testid="shopping-cart-product-name">{title}</h3>
       <p>{price}</p>
+      {shipping && shipping.free_shipping && (
+        <p data-testid="free-shipping">
+          Frete Grátis
+        </p>
+      )}
       <button
         data-testid="product-detail-link"
         onClick={ () => {
