@@ -4,7 +4,6 @@ import { CategoryType } from '../@types/CategoryType';
 import Aside from '../components/Aside';
 import ProductCard from '../components/ProductCard';
 import { ProductType } from '../@types/ProductType';
-import ShopButton from '../components/ShoppingButton/ShoppingButton';
 import { ShoppingCartProduct } from '../@types/ShoppingCartProduct';
 
 type HomeProps = {
@@ -18,7 +17,6 @@ function Home({ searchedProducts, setSearchedProducts,
   setShoppingCartItems, shoppingCartItems }: HomeProps) {
   const [categoriesVisibility, setCategoriesVisibility] = useState(false);
   const [categories, setCategories] = useState<CategoryType[]>([]);
-
   useEffect(() => {
     const fetchCategories = async () => {
       const data = await getCategories();
@@ -57,9 +55,7 @@ function Home({ searchedProducts, setSearchedProducts,
          && 'Digite algum termo de pesquisa ou escolha uma categoria.'
         }
       </div>
-      <div>
-        <ShopButton />
-      </div>
+      <div />
     </main>
   );
 }

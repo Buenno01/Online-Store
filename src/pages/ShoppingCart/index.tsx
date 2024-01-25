@@ -8,9 +8,12 @@ function ShoppingCart() {
     products,
     setProducts,
   ] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', [] as ShoppingCartProduct[]);
+
   return (
     <div className="shopping-cart-empty-page">
-      <h1>Carrinho de Compras</h1>
+      <h1>
+        Carrinho de Compras
+      </h1>
 
       {products.length !== 0 ? (
         products.map((item) => (
