@@ -3,10 +3,10 @@ import { HiMiniShoppingBag } from 'react-icons/hi2';
 function Logo() {
   return (
     <h1 className="text-emerald-300 flex items-center justify-center">
-      <span className="text-5xl">
+      <span className="text-3xl md:text-5xl">
         <HiMiniShoppingBag />
       </span>
-      <span className="flex flex-col text-center text-2xl">
+      <span className="flex-col text-center text-2xl hidden md:flex">
         <span className="uppercase text-white font-semibold leading-6">front-end</span>
         <span className="lowercase font-light text-lg leading-4">online store</span>
       </span>

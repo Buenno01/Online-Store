@@ -17,9 +17,8 @@ function Layout({ searchQuery, setSearchQuery,
   setSearchedProducts, shoppingCartItems }: LayoutProps) {
   return (
     <div className="min-h-screen">
-
       <header
-        className="flex flex-col py-2 gap-1
+        className="flex md:flex-col p-2 gap-2
         bg-blue-600 shadow-lg content-center items-center"
       >
         <Logo />

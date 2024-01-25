@@ -19,20 +19,30 @@ function ShopButton({ shoppingCartItems }: ShopButtonProps) {
 
   return (
     <div>
-      <nav>
+      <nav className="relative">
         <Link
           to="/carrinho"
           data-testid="shopping-cart-button"
         >
-          <span data-testid="shopping-cart-size">
-            (
-            {cartSize}
-            )
+          {
+            cartSize > 0
+          && (
+            <span
+              className="absolute text-white bg-red-500
+              text-xs font-medium rounded-full w-4 h-4 text-center
+              flex justify-center bottom-4 left-4"
+              data-testid="shopping-cart-size"
+            >
+              {cartSize}
+            </span>
+          )
+          }
+          <span className="text-2xl text-white">
+            <FaShoppingCart />
           </span>
-          <FaShoppingCart />
         </Link>
       </nav>
     </div>
   );
 }
-export default (ShopButton);
+export default ShopButton;

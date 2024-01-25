@@ -26,37 +26,40 @@ function Aside({ categories, setSearchedProducts,
   };
 
   return (
-    <aside
-      className="flex flex-col w-full bg-white absolute "
-    >
-      <button
-        onClick={ () => { setCategoriesVisibility(!categoriesVisibility); } }
+    <>
+      <div className="h-12 w-full" />
+      <aside
+        className="flex flex-col w-full bg-white absolute "
       >
-        <h2
-          className="font-bold text-lg text-center py-1
-        shadow-md"
+        <button
+          onClick={ () => { setCategoriesVisibility(!categoriesVisibility); } }
         >
-          Categorias
-        </h2>
-      </button>
-      <hr />
-      <nav
-        className={ `flex-col text-gray-600 font-normal 
+          <h2
+            className="font-bold text-lg text-center py-1
+          shadow-md"
+          >
+            Categorias
+          </h2>
+        </button>
+        <hr />
+        <nav
+          className={ `flex-col text-gray-600 font-normal 
         gap-2 px-6 top-14 bg-white overflow-y-scroll
         ${categoriesVisibility ? 'flex' : 'hidden'}` }
-      >
-        {
-            categories.map((category) => (
-              <Category
-                key={ category.id }
-                isActive={ activeCategory === category.id }
-                handleClick={ () => { getSelectedCategory(category.id); } }
-                name={ category.name }
-              />
-            ))
+        >
+          {
+          categories.map((category) => (
+            <Category
+              key={ category.id }
+              isActive={ activeCategory === category.id }
+              handleClick={ () => { getSelectedCategory(category.id); } }
+              name={ category.name }
+            />
+          ))
           }
-      </nav>
-    </aside>
+        </nav>
+      </aside>
+    </>
   );
 }
 

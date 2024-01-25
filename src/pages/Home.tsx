@@ -28,7 +28,7 @@ function Home({ searchedProducts, setSearchedProducts,
   }, []);
 
   return (
-    <main className="flex relative">
+    <main className="flex flex-col relative">
       <Aside
         setCategoriesVisibility={ setCategoriesVisibility }
         categoriesVisibility={ categoriesVisibility }

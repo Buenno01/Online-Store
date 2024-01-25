@@ -27,8 +27,9 @@ function SearchBar({ searchQuery, setSearchQuery, setSearchedProducts }: SearchB
     >
       <input
         type="text"
+        className="w-40"
         data-testid="query-input"
-        placeholder="digite o nome do produto"
+        placeholder="Busque um produto"
         value={ searchQuery }
         onChange={ (e) => { hanldeChange(e); } }
       />
