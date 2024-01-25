@@ -1,20 +1,18 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Dispatch, SetStateAction } from 'react';
 import { ProductType } from '../../@types/ProductType';
 import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
+import AddToCartBtn from '../Atoms/AddToCartBtn';
 
 type ProductCardProps = {
   product: ProductType,
   shoppingCartItems: ShoppingCartProduct[],
   setShoppingCartItems: Dispatch<SetStateAction<ShoppingCartProduct[]>>,
-  quantity?: number,
 };
 
 function ProductCard({ product, setShoppingCartItems,
-  shoppingCartItems, quantity = 1 }: ProductCardProps) {
+  shoppingCartItems }: ProductCardProps) {
   const { thumbnail, title, price, shipping } = product;
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
 
   const addToShoppingCart = (productObject: ProductType) => {
     const itemIndex = shoppingCartItems.findIndex((item) => item.id === product.id);
@@ -37,37 +35,42 @@ function ProductCard({ product, setShoppingCartItems,
   };
 
   return (
-    <div data-testid="product">
-      <img src={ thumbnail } alt={ title } />
-      <h3 data-testid="shopping-cart-product-name">{title}</h3>
-      <p>{price}</p>
-      {shipping && shipping.free_shipping && (
-        <p data-testid="free-shipping">
-          Frete Grátis
-        </p>
-      )}
-      <button
+    <div
+      className="relative w-48 flex flex-col justify-center items-center h-64
+      shadow-md rounded-lg"
+      data-testid="product"
+    >
+      <Link
+        className="text-sm hover:text-blue-400
+        flex flex-col justify-center items-center"
         data-testid="product-detail-link"
-        onClick={ () => {
-          navigate(`/product-details/${product.id}`);
-        } }
+        to={ `/product-details/${product.id}` }
       >
-        more details
-      </button>
-      {
-        pathname === '/carrinho' ? (
-          <p data-testid="shopping-cart-product-quantity">{quantity}</p>
-        )
-          : (
-            <button
-              aria-label="Adicionar produto ao carrinho"
-              onClick={ () => { addToShoppingCart(product); } }
-              data-testid="product-add-to-cart"
+        <img
+          src={ thumbnail }
+          alt={ title }
+        />
+        <h3
+          data-testid="shopping-cart-product-name"
+        >
+          {title}
+        </h3>
+        <h2 className="text-3xl font-medium">
+          {price}
+        </h2>
+        {
+          shipping && shipping.free_shipping
+          && (
+            <p
+              className="text-emerald-500 text-md font-semibold"
+              data-testid="free-shipping"
             >
-              Adicionar ao carrinho
-            </button>
+              Frete Grátis
+            </p>
           )
-      }
+        }
+      </Link>
+      <AddToCartBtn handleClick={ () => { addToShoppingCart(product); } } />
     </div>
   );
 }

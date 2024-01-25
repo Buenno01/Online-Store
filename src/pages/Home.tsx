@@ -35,7 +35,7 @@ function Home({ searchedProducts, setSearchedProducts,
         categories={ categories }
         setSearchedProducts={ setSearchedProducts }
       />
-      <section>
+      <section className="flex flex-col items-center gap-3">
         {
         searchedProducts as ProductType[]
         && searchedProducts?.map(
