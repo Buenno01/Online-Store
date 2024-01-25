@@ -12,10 +12,11 @@ type LayoutProps = {
 
 function Layout({ searchQuery, setSearchQuery, setSearchedProducts }: LayoutProps) {
   return (
-    <>
+    <div className="min-h-screen">
+
       <header
         className="flex flex-col py-2 gap-1
-      bg-blue-600 shadow-lg content-center items-center"
+        bg-blue-600 shadow-lg content-center items-center"
       >
         <Logo />
         <SearchBar
@@ -25,7 +26,7 @@ function Layout({ searchQuery, setSearchQuery, setSearchedProducts }: LayoutProp
         />
       </header>
       <Outlet />
-    </>
+    </div>
   );
 }
 

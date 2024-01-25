@@ -16,6 +16,7 @@ type HomeProps = {
 
 function Home({ searchedProducts, setSearchedProducts,
   setShoppingCartItems, shoppingCartItems }: HomeProps) {
+  const [categoriesVisibility, setCategoriesVisibility] = useState(false);
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
@@ -29,8 +30,13 @@ function Home({ searchedProducts, setSearchedProducts,
   }, []);
 
   return (
-    <main className="flex">
-      <Aside categories={ categories } setSearchedProducts={ setSearchedProducts } />
+    <main className="flex relative">
+      <Aside
+        setCategoriesVisibility={ setCategoriesVisibility }
+        categoriesVisibility={ categoriesVisibility }
+        categories={ categories }
+        setSearchedProducts={ setSearchedProducts }
+      />
       <section>
         {
         searchedProducts as ProductType[]
