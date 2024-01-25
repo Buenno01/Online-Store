@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Dispatch, SetStateAction } from 'react';
 import SearchBar from './SearchBar';
 import { ProductType } from '../../@types/ProductType';
+import Logo from './Logo';
 
 type LayoutProps = {
   searchQuery: string,
@@ -12,16 +13,16 @@ type LayoutProps = {
 function Layout({ searchQuery, setSearchQuery, setSearchedProducts }: LayoutProps) {
   return (
     <>
-      <header>
+      <header
+        className="flex flex-col py-2 gap-1
+      bg-blue-600 shadow-lg content-center items-center"
+      >
+        <Logo />
         <SearchBar
           searchQuery={ searchQuery }
           setSearchQuery={ setSearchQuery }
           setSearchedProducts={ setSearchedProducts }
         />
-        <h1>
-          Online Store
-        </h1>
-        <hr />
       </header>
       <Outlet />
     </>

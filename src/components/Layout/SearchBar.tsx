@@ -1,4 +1,5 @@
-import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
 import { ProductType } from '../../@types/ProductType';
 
@@ -20,9 +21,11 @@ function SearchBar({ searchQuery, setSearchQuery, setSearchedProducts }: SearchB
   };
 
   return (
-    <form onSubmit={ (e) => { e.preventDefault(); } }>
+    <form
+      className="flex border bg-white border-gray-200 p-1 m-auto"
+      onSubmit={ (e) => { e.preventDefault(); } }
+    >
       <input
-        className="border border-gray-400"
         type="text"
         data-testid="query-input"
         placeholder="digite o nome do produto"
@@ -30,11 +33,11 @@ function SearchBar({ searchQuery, setSearchQuery, setSearchedProducts }: SearchB
         onChange={ (e) => { hanldeChange(e); } }
       />
       <button
+        className="text-emerald-400 px-1"
         data-testid="query-button"
         onClick={ handleSearch }
       >
-        Pesquisar
-
+        <FaMagnifyingGlass />
       </button>
     </form>
   );
