@@ -12,13 +12,14 @@ import CheckoutShop from './pages/FinishedShop/Index';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [
-    soppingCartItems,
+    shoppingCartItems,
     setShoppingCartItems,
   ] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', []);
   const [
     searchedProducts,
     setSearchedProducts,
   ] = useState<ProductType[] | undefined >(undefined);
+
   return (
     <Routes>
       <Route
@@ -28,6 +29,7 @@ function App() {
             searchQuery={ searchQuery }
             setSearchQuery={ setSearchQuery }
             setSearchedProducts={ setSearchedProducts }
+            shoppingCartItems={ shoppingCartItems }
           />
         }
       >
@@ -37,7 +39,7 @@ function App() {
             setSearchedProducts={ setSearchedProducts }
             searchedProducts={ searchedProducts }
             setShoppingCartItems={ setShoppingCartItems }
-            shoppingCartItems={ soppingCartItems }
+            shoppingCartItems={ shoppingCartItems }
           /> }
         />
         <Route path="/carrinho" element={ <ShoppingCart /> } />
