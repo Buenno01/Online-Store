@@ -11,6 +11,7 @@ import CheckoutShop from './pages/FinishedShop/Index';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(false);
   const [
     shoppingCartItems,
     setShoppingCartItems,
@@ -26,6 +27,7 @@ function App() {
         path="/"
         element={
           <Layout
+            setLoading={ setLoading }
             searchQuery={ searchQuery }
             setSearchQuery={ setSearchQuery }
             setSearchedProducts={ setSearchedProducts }
@@ -36,6 +38,8 @@ function App() {
         <Route
           index
           element={ <Home
+            setLoading={ setLoading }
+            loading={ loading }
             setSearchedProducts={ setSearchedProducts }
             searchedProducts={ searchedProducts }
             setShoppingCartItems={ setShoppingCartItems }

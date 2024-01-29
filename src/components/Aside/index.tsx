@@ -9,13 +9,16 @@ type AsideProps = {
   setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>,
   setCategoriesVisibility: Dispatch<SetStateAction<boolean>>,
   categoriesVisibility: boolean,
+  setLoading: Dispatch<SetStateAction<boolean>>,
 };
 
 function Aside({ categories, setSearchedProducts,
-  categoriesVisibility, setCategoriesVisibility }: AsideProps) {
+  categoriesVisibility, setCategoriesVisibility, setLoading }: AsideProps) {
   const [activeCategory, setActiveCategory] = useState<string>('');
+
   const getSelectedCategory = async (categoryId: string) => {
     setCategoriesVisibility(false);
+    setLoading(true);
     setActiveCategory(categoryId);
     const { results } = await getProductsByCategory(categoryId);
     const data = results
@@ -23,6 +26,7 @@ function Aside({ categories, setSearchedProducts,
         return products as ProductType;
       });
     setSearchedProducts(data as ProductType[]);
+    setLoading(false);
   };
 
   return (

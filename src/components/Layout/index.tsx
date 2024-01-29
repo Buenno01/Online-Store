@@ -11,9 +11,10 @@ type LayoutProps = {
   setSearchQuery: Dispatch<SetStateAction<string>>,
   setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>
   shoppingCartItems: ShoppingCartProduct [],
+  setLoading: Dispatch<SetStateAction<boolean>>,
 };
 
-function Layout({ searchQuery, setSearchQuery,
+function Layout({ searchQuery, setSearchQuery, setLoading,
   setSearchedProducts, shoppingCartItems }: LayoutProps) {
   return (
     <div className="min-h-screen">
@@ -23,6 +24,7 @@ function Layout({ searchQuery, setSearchQuery,
       >
         <Logo />
         <SearchBar
+          setLoading={ setLoading }
           searchQuery={ searchQuery }
           setSearchQuery={ setSearchQuery }
           setSearchedProducts={ setSearchedProducts }

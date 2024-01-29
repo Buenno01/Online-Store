@@ -30,10 +30,8 @@ function ShoppingCart() {
         </div>
       )}
       <div>
-        <Link to="/Checkout">
-          <button type="button" data-testid="checkout-products">
-            Finalizar Shop
-          </button>
+        <Link to="/Checkout" data-testid="checkout-products">
+          Finalizar Compras
         </Link>
       </div>
     </div>

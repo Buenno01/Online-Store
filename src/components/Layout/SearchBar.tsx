@@ -1,22 +1,29 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
 import { ProductType } from '../../@types/ProductType';
 
 type SearchBarProps = {
   searchQuery: string,
   setSearchQuery: Dispatch<SetStateAction<string>>,
-  setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>
+  setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>,
+  setLoading: Dispatch<SetStateAction<boolean>>,
 };
 
-function SearchBar({ searchQuery, setSearchQuery, setSearchedProducts }: SearchBarProps) {
+function SearchBar({ searchQuery, setSearchQuery,
+  setSearchedProducts, setLoading }: SearchBarProps) {
+  const navigate = useNavigate();
   const hanldeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(target.value);
   };
 
   const handleSearch = async () => {
+    setLoading(true);
+    navigate('/');
     const data = await getProductsFromCategoryAndQuery('', searchQuery);
     setSearchedProducts(data.results as ProductType[]);
+    setLoading(false);
     console.log(data);
   };
 

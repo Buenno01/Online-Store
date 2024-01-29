@@ -11,9 +11,11 @@ type HomeProps = {
   setSearchedProducts: Dispatch<SetStateAction<ProductType[] | undefined>>,
   shoppingCartItems: ShoppingCartProduct[],
   setShoppingCartItems: Dispatch<SetStateAction<ShoppingCartProduct[]>>,
+  setLoading: Dispatch<SetStateAction<boolean>>,
+  loading: boolean,
 };
 
-function Home({ searchedProducts, setSearchedProducts,
+function Home({ searchedProducts, setSearchedProducts, loading, setLoading,
   setShoppingCartItems, shoppingCartItems }: HomeProps) {
   const [categoriesVisibility, setCategoriesVisibility] = useState(false);
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -34,10 +36,11 @@ function Home({ searchedProducts, setSearchedProducts,
         categoriesVisibility={ categoriesVisibility }
         categories={ categories }
         setSearchedProducts={ setSearchedProducts }
+        setLoading={ setLoading }
       />
       <section className="flex flex-col items-center gap-3">
         {
-        searchedProducts as ProductType[]
+        searchedProducts as ProductType[] && !loading
         && searchedProducts?.map(
           (product) => (
             <ProductCard
@@ -49,10 +52,17 @@ function Home({ searchedProducts, setSearchedProducts,
         )
 }
       </section>
-      <div data-testid="home-initial-message">
+      <div
+        className="text-gray-400 text-2xl font-bold text-center mt-10"
+        data-testid="home-initial-message"
+      >
         {
-        !searchedProducts
-         && 'Digite algum termo de pesquisa ou escolha uma categoria.'
+        loading
+          && 'Carregando...'
+        }
+        {
+        !searchedProducts && !loading
+          && 'Digite algum termo de pesquisa ou escolha uma categoria.'
         }
       </div>
       <div />
