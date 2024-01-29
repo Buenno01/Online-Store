@@ -47,31 +47,34 @@ function ProductCard({ product, setShoppingCartItems,
         to={ `/product-details/${product.id}` }
       >
         <img
+          className="max-w-48 max-h-32"
           src={ thumbnail }
           alt={ title }
         />
-        <h3
-          data-testid="shopping-cart-product-name"
-        >
-          {title}
-        </h3>
-        <h2 className="text-3xl font-medium">
-          {
-          parseFloat(price).toFixed(2).toString().split('.')
-            .join(',')
+        <span className="flex flex-col justify-center px-2">
+          <h3
+            data-testid="shopping-cart-product-name"
+          >
+            {title}
+          </h3>
+          <h2 className="text-3xl font-medium text-center">
+            {
+            parseFloat(price).toFixed(2).toString().split('.')
+              .join(',')
           }
-        </h2>
-        {
+          </h2>
+          {
           shipping && shipping.free_shipping
           && (
             <p
-              className="text-emerald-500 text-md font-semibold"
+              className="text-emerald-500 text-md font-semibold text-center"
               data-testid="free-shipping"
             >
               Frete Grátis
             </p>
           )
         }
+        </span>
       </Link>
       <AddToCartBtn handleClick={ () => { addToShoppingCart(product); } } />
     </div>
