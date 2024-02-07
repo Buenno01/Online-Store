@@ -84,7 +84,8 @@ function ProductDetail() {
         setComments={ setComments }
         comments={ comments }
       />
-      {
+      <ul>
+        {
         comments.map((comment) => (
           <Comment
             key={ comment.email + comment.rating }
@@ -93,7 +94,8 @@ function ProductDetail() {
             rating={ comment.rating }
           />
         ))
-      }
+        }
+      </ul>
     </div>
   );
 }
