@@ -14,7 +14,7 @@ function ProductListItem({ product, cartProducts,
   return (
     <li
       className="flex flex-col items-center gap-2
-    border border-gray-300 rounded-md px-2 py-1"
+    border border-gray-300 rounded-md px-2 py-1 w-full"
     >
       <ProductInfo thumbnail={ product.thumbnail } title={ product.title } />
       <div className="flex justify-between w-full items-center">

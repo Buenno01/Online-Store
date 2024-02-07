@@ -31,23 +31,34 @@ function QuantityBar({ cartProducts, product,
     setCartProducts([...newList]);
   };
 
+  const buttonClasses = `
+    w-8 h-8 rounded-md
+    text-gray-700
+    hover:bg-opacity-60
+    active:bg-opacity-80
+  `;
+
   return (
-    <span className="flex">
+    <span className="flex gap-2">
       <Button
+        className={ `${buttonClasses}bg-purple-100` }
         onClick={ () => { handleIncrement(true); } }
         Icon={ FaMinus }
       />
       <span
         data-testid="shopping-cart-product-quantity"
-        className="w-10 h-8 text-center items-center flex justify-center"
+        className="w-10 h-8 text-center items-center flex justify-center bg-gray-100
+        rounded-md"
       >
         {product.quantityOnShoppingCart}
       </span>
       <Button
+        className={ `${buttonClasses}bg-emerald-100` }
         onClick={ () => { handleIncrement(); } }
         Icon={ FaPlus }
       />
       <Button
+        className={ `${buttonClasses}bg-red-200` }
         onClick={ handleRemove }
         Icon={ FaRegTrashCan }
       />

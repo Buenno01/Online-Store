@@ -29,7 +29,8 @@ function ShoppingCart() {
       )}
       <div>
         <Link
-          className="bg-emerald-400 text-white px-4 py-2 rounded-md"
+          className="bg-emerald-400 text-white px-4 py-2 rounded-md
+          hover:bg-opacity-70 active:bg-opacity-80"
           to="/Checkout"
           data-testid="checkout-products"
         >
