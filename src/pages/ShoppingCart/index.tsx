@@ -11,7 +11,7 @@ function ShoppingCart() {
 
   return (
     <main
-      className="px-10 py-5 flex flex-col gap-4 items-center w-full"
+      className="px-3 py-5 flex flex-col gap-4 items-center w-full"
     >
       {products.length !== 0 ? (
         products.map((item) => (
