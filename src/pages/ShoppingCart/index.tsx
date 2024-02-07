@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
 import { useLocalStorage } from '../../services/useLocalStorage';
-import ProductListItem from './ProductListItem';
+import ProductListItem from '../../components/ProductListItem';
 
 function ShoppingCart() {
   const [
@@ -10,11 +10,9 @@ function ShoppingCart() {
   ] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', [] as ShoppingCartProduct[]);
 
   return (
-    <div className="shopping-cart-empty-page">
-      <h1>
-        Carrinho de Compras
-      </h1>
-
+    <main
+      className="px-10 py-5 flex flex-col gap-4 items-center w-full"
+    >
       {products.length !== 0 ? (
         products.map((item) => (
           <ProductListItem
@@ -30,11 +28,15 @@ function ShoppingCart() {
         </div>
       )}
       <div>
-        <Link to="/Checkout" data-testid="checkout-products">
+        <Link
+          className="bg-emerald-400 text-white px-4 py-2 rounded-md"
+          to="/Checkout"
+          data-testid="checkout-products"
+        >
           Finalizar Compras
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
 
