@@ -7,6 +7,7 @@ import { ShoppingCartProduct } from '../../@types/ShoppingCartProduct';
 import Comment from '../../components/Comment';
 import NewCommentForm from '../../components/NewCommentForm';
 import { CommentFormType } from '../../@types/CommentFormType';
+import Carregando from '../../components/Carregando';
 
 function ProductDetail() {
   const { productId } = useParams<{ productId?: string }>();
@@ -35,7 +36,7 @@ function ProductDetail() {
     getIdProduct();
   }, [productId]);
   if (!product) {
-    return <p>Carregando...</p>;
+    return <Carregando />;
   }
   const { title, thumbnail, price, shipping } = product;
 
