@@ -23,19 +23,27 @@ function ShoppingCart() {
           />
         ))
       ) : (
-        <div className="empty-message" data-testid="shopping-cart-empty-message">
+        <div
+          className="text-gray-400 text-2xl font-bold text-center mt-10 mb-10"
+          data-testid="shopping-cart-empty-message"
+        >
           Seu carrinho está vazio
         </div>
       )}
       <div>
-        <Link
-          className="bg-emerald-400 text-white px-4 py-2 rounded-md
+        {
+        products.length > 0
+        && (
+          <Link
+            className="bg-emerald-400 text-white px-4 py-2 rounded-md
           hover:bg-opacity-70 active:bg-opacity-80"
-          to="/Checkout"
-          data-testid="checkout-products"
-        >
-          Finalizar Compras
-        </Link>
+            to="/Checkout"
+            data-testid="checkout-products"
+          >
+            Finalizar Compras
+          </Link>
+        )
+        }
       </div>
     </main>
   );
