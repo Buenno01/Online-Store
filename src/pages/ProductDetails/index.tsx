@@ -62,8 +62,18 @@ function ProductDetail() {
 
   return (
     <div>
-      <h2 data-testid="product-detail-name">{title}</h2>
-      <img src={ thumbnail } alt={ title } data-testid="product-detail-image" />
+      <h2
+        className="text-xl text-center"
+        data-testid="product-detail-name"
+      >
+        {title}
+      </h2>
+      <img
+        className="mx-auto"
+        src={ thumbnail }
+        alt={ title }
+        data-testid="product-detail-image"
+      />
       <p data-testid="product-detail-price">
         R$
         {' '}
